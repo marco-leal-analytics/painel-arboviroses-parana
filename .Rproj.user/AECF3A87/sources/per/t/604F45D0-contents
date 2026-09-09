@@ -1,0 +1,46 @@
+#####################################Arquivos (global) #####################################
+source(file = "librarys.R",encoding = "UTF-8",local = F)
+# dados agregados da Greicy 2007-2020, mas usar filtro depois 
+
+dados_int_pr<-read_excel("dados/Dengue 15 RS.xls",sheet = "RS confirmados")
+
+dados_int_pr$MACRO <- as.factor(dados_int_pr$MACRO)
+
+#dados desagregados 2020
+
+#Reading the generate File after using google api to obtain the coordinates
+data <- readRDS("dados/dengue 2020 - sem 18 com coordenadas.rds")
+data <- data %>% filter(!is.na(latitude))
+data <- data[,c("latitude","longitude")]
+
+#Temporary:  Generating objetcs wih just the coordinates to be plotted 
+
+coordenadas <- data[,c("latitude","longitude")] %>% filter(latitude < -22.5 & latitude > -26.8 & longitude < -48 & longitude > -55)
+
+coordenadas15     <- data[,c("latitude","longitude")]  %>% filter(latitude < -22.55 & latitude > -23.7 & longitude < -51.58 & longitude > -52.42)
+
+coordenadasMga     <- data[,c("latitude","longitude")]  %>% filter(latitude < -23.25 & latitude > -23.47 & longitude < -51.825 & longitude > -51.98)
+
+library(geobr)
+
+# Download all municipalities of a state
+#all_muni <- geobr::read_municipality(code_muni = "41")
+
+# Filter all municipalities of a 15 RS
+cod_mun_15 <- readRDS("dados/cod_mun_15.rds")
+
+#all_muni$code_muni6  <- substr(all_muni$code_muni,start = 1,6) %>% as.numeric()
+#all_muni_15          <- all_muni %>% filter(code_muni6 %in% cod_mun_15)
+
+
+
+#################################### Fim Arquivos ###########################################
+
+####################################### Séries ##############################################
+
+ano_ini <-  2007
+ano_fim <- 2020
+
+serie <-ts(as.numeric(dados_int_pr[402,9:22],start=ano_ini,freq=1))
+
+###################################### Fim Séries ########################################## 

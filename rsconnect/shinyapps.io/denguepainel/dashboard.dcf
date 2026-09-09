@@ -1,0 +1,12 @@
+name: dashboard
+title: dashboard
+username:
+account: denguepainel
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2590577
+bundleId: 3467703
+url: https://denguepainel.shinyapps.io/dashboard/
+when: 1596431393.13801
+asMultiple: FALSE
+asStatic: FALSE
