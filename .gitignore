@@ -1,0 +1,38 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ambientes e caches locais
+renv/library/
+renv/staging/
+.Rproj.user/
+
+# Artefatos gerados pela aplicação
+pdf_folder/*.pdf
+main.pdf
+main.log
+body.tex
+main.tex
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+temp*.html
+Rplot*.png
+anos_serie.png
+diagramacontrole.png
+map_*.png
+
+dadosdengue.csv
+base_full.csv
+canal_endemico.csv
+
+# Bases órfãs/grandes fora do fluxo de dados versionado
+/DengueEstatistica/
+/painel_dengue.rar
+data/raw/legado/**/*.rar
+dbase_reduzido.csv
+
+# Metadados de deploy
+rsconnect/
