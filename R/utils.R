@@ -2,6 +2,16 @@ espaco_html <- function(n = 6) {
   shiny::HTML(rep("<br>", n))
 }
 
+# Diretório de artefatos gerados em runtime (gráficos e LaTeX do relatório),
+# mantido fora da raiz do projeto. Ver output/README.md.
+report_output_dir <- function() {
+  dir <- file.path("output", "relatorio")
+  if (!dir.exists(dir)) {
+    dir.create(dir, recursive = TRUE)
+  }
+  dir
+}
+
 rm_accent <- function(str, pattern = "all") {
   if (!is.character(str)) {
     str <- as.character(str)

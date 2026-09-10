@@ -44,7 +44,7 @@ diagrama_controle_server <- function(id, shared_data) {
         ggplot2::geom_line(ggplot2::aes(color = anoepi), size = 1.1) +
         ggplot2::scale_color_manual(values = c(RColorBrewer::brewer.pal(n = 9, name = "Set1"), RColorBrewer::brewer.pal(n = 6, name = "Dark2"))) +
         axis.theme(x.angle = 45, vjust = 0.5, hjust = 0.5)
-      ggplot2::ggsave(filename = "anos_serie.png", analise, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "anos_serie.png"), analise, width = 12, height = 7)
       analise_plotly <- plotly::ggplotly(analise) %>%
         plotly::layout(
           hovermode = TRUE, spikedistance = -1, margin = c(4, 0, 0, 0),
@@ -120,7 +120,7 @@ diagrama_controle_server <- function(id, shared_data) {
           autosize = TRUE, height = 450
         ) %>%
         plotly::config(displayModeBar = FALSE)
-      ggplot2::ggsave(filename = "diagramacontrole.png", plot, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "diagramacontrole.png"), plot, width = 12, height = 7)
 
       output$analise_serie <- plotly::renderPlotly({
         analise_plotly

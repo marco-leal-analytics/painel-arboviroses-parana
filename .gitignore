@@ -8,25 +8,15 @@ renv/library/
 renv/staging/
 .Rproj.user/
 
-# Artefatos gerados pela aplicação
+# Artefatos gerados pela aplicação (gráficos e LaTeX do relatório)
+output/*
+!output/README.md
 pdf_folder/*.pdf
-main.pdf
-main.log
-body.tex
-main.tex
 *.aux
 *.fls
 *.fdb_latexmk
 *.synctex.gz
 temp*.html
-Rplot*.png
-anos_serie.png
-diagramacontrole.png
-map_*.png
-
-dadosdengue.csv
-base_full.csv
-canal_endemico.csv
 
 # Bases órfãs/grandes fora do fluxo de dados versionado
 /DengueEstatistica/

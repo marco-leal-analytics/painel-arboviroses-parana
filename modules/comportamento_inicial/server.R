@@ -4,7 +4,8 @@ comportamento_inicial_server <- function(id, shared_data) {
     don2 <- shared_data$don2
     dados_descritive <- shared_data$dados.maps.pr %>% dplyr::filter(!is.na(Casos))
 
-    res_mod <- shinyWidgets::selectizeGroupServer(
+    res_mod <- shiny::callModule(
+      module = shinyWidgets::selectizeGroupServer,
       id = "myfilters",
       data = dados_descritive,
       vars = c("macroregional", "regional", "nome")

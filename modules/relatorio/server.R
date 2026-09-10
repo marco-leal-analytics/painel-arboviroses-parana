@@ -25,12 +25,16 @@ relatorio_server <- function(id, shared_data, fig) {
       shiny::showNotification("CARREGANDO MAPAS ... ", duration = 5)
       shiny::showNotification("GERANDO GRÁFICOS ... ")
 
+      out_dir <- report_output_dir()
+      project_root <- normalizePath(getwd(), winslash = "/")
+
       current_fig <- fig()
       if (!is.null(current_fig)) {
-        if (file.exists("Rplot1.png")) {
-          file.remove("Rplot1.png")
+        rplot_path <- file.path(out_dir, "Rplot1.png")
+        if (file.exists(rplot_path)) {
+          file.remove(rplot_path)
         }
-        ggplot2::ggsave(filename = "Rplot1.png", plot = current_fig, width = 12, height = 7)
+        ggplot2::ggsave(filename = rplot_path, plot = current_fig, width = 12, height = 7)
       }
 
       shiny::showNotification("GERANDO TABELAS ... ")
@@ -93,11 +97,11 @@ relatorio_server <- function(id, shared_data, fig) {
       table.rank$Municipio <- stringr::str_to_title(table.rank$Municipio)
 
       shiny::showNotification("GERANDO FORMULÁRIO ... ")
-      fileName <- "main.tex"
+      fileName <- file.path(out_dir, "main.tex")
       if (file.exists(fileName)) {
         unlink(fileName)
       }
-      name_body <- "body.tex"
+      name_body <- file.path(out_dir, "body.tex")
       sink(fileName, append = FALSE)
 
       cat("\\documentclass[10pt,a4paper]{article} \n")
@@ -108,6 +112,7 @@ relatorio_server <- function(id, shared_data, fig) {
       cat("\\usepackage{amssymb}\n")
       cat("\\usepackage{booktabs }\n")
       cat("\\usepackage{graphicx}\n")
+      cat(paste0("\\graphicspath{{", project_root, "/}{", normalizePath(out_dir, winslash = "/"), "/}}\n"))
       cat("\\usepackage[left=1cm,right=1cm,top=3cm,bottom=1cm]{geometry}\n")
       cat("\\usepackage{caption} \n \\usepackage{subcaption}\n")
       cat("\\usepackage{multicol}\n")
@@ -130,8 +135,8 @@ relatorio_server <- function(id, shared_data, fig) {
 
       sink()
 
-      if (file.exists("body.tex")) {
-        unlink("body.tex")
+      if (file.exists(name_body)) {
+        unlink(name_body)
       }
 
       inc <- format((table.df[9, 1] / 11433957) * 100000, scientific = FALSE)
@@ -234,19 +239,23 @@ relatorio_server <- function(id, shared_data, fig) {
       shiny::showNotification("CARREGANDO ... ")
       tryCatch(
         {
+          old_wd <- setwd(out_dir)
+          on.exit(setwd(old_wd), add = TRUE)
           tinytex::latexmk("main.tex", clean = TRUE)
+          setwd(old_wd)
           pdf_folder <- "pdf_folder"
           if (!dir.exists(pdf_folder)) {
             dir.create(pdf_folder, recursive = TRUE)
           }
           temp <- file.path(pdf_folder, "formulario.pdf")
-          if (!file.exists("main.pdf")) {
+          main_pdf <- file.path(out_dir, "main.pdf")
+          if (!file.exists(main_pdf)) {
             stop("A compilação não gerou main.pdf.")
           }
           if (file.exists(temp)) {
             unlink(temp)
           }
-          if (!file.copy("main.pdf", temp, overwrite = TRUE)) {
+          if (!file.copy(main_pdf, temp, overwrite = TRUE)) {
             stop("Não foi possível copiar o PDF para a pasta pública.")
           }
           shiny::addResourcePath("pdf_folder", pdf_folder)

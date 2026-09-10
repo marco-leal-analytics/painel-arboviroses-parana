@@ -31,7 +31,9 @@ load_lia <- function(path = file.path("data", "raw", "Planilha IIP.xls")) {
 load_regionais <- function(path = file.path("data", "raw", "regionais.xlsx")) {
   regionais <- readxl::read_xlsx(path = path, sheet = "Planilha1")
   regionais$nome <- tolower(rm_accent(as.character(regionais$nome)))
-  regionais
+  # A planilha fonte contém uma linha duplicada para "agudos do sul", o que
+  # gera um relacionamento many-to-many no join por `Codigo` em shared_data.R.
+  dplyr::distinct(regionais)
 }
 
 load_coordenadas_municipios <- function(path = file.path("data", "raw", "Coordenadas_Municipios.xls")) {

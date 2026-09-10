@@ -119,7 +119,7 @@ mapa_cidades_server <- function(id, shared_data, res_mod) {
         ggplot2::xlab("Longitude") + ggplot2::ylab("Latitude") + axis.theme() + ggplot2::labs(fill = "Lengenda Incidências") +
         ggplot2::scale_fill_manual(values = c("white", "lightgray", "yellow", "orange", "red", "saddlebrown")) +
         ggspatial::annotation_north_arrow(location = "bl", which_north = "true", pad_x = ggplot2::unit(0.75, "in"), pad_y = ggplot2::unit(0.5, "in"), style = ggspatial::north_arrow_fancy_orienteering)
-      ggplot2::ggsave(filename = "map_inc4.png", plot = map_inc4, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "map_inc4.png"), plot = map_inc4, width = 12, height = 7)
 
       map_inc <- ggplot2::ggplot() +
         ggplot2::geom_sf(data = dados.maps.pr, size = 1, show.legend = TRUE, fill = cores) +
@@ -127,7 +127,7 @@ mapa_cidades_server <- function(id, shared_data, res_mod) {
         ggplot2::xlab("Longitude") + ggplot2::ylab("Latitude") + axis.theme() + ggplot2::labs(fill = "Lengenda Incidências") +
         ggplot2::scale_fill_manual(values = c("white", "lightgray", "yellow", "orange", "red", "saddlebrown")) +
         ggspatial::annotation_north_arrow(location = "bl", which_north = "true", pad_x = ggplot2::unit(0.75, "in"), pad_y = ggplot2::unit(0.5, "in"), style = ggspatial::north_arrow_fancy_orienteering)
-      ggplot2::ggsave(filename = "map_inc.png", plot = map_inc, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "map_inc.png"), plot = map_inc, width = 12, height = 7)
 
       map_obt <- ggplot2::ggplot() +
         ggplot2::geom_sf(data = dados.maps.pr, size = 1, show.legend = TRUE, fill = cores3) +
@@ -135,7 +135,7 @@ mapa_cidades_server <- function(id, shared_data, res_mod) {
         ggplot2::xlab("Longitude") + ggplot2::ylab("Latitude") + axis.theme() + ggplot2::labs(fill = "Lengenda Incidências") +
         ggplot2::scale_fill_manual(values = c("white", "lightgray", "yellow", "orange", "red", "saddlebrown")) +
         ggspatial::annotation_north_arrow(location = "bl", which_north = "true", pad_x = ggplot2::unit(0.75, "in"), pad_y = ggplot2::unit(0.5, "in"), style = ggspatial::north_arrow_fancy_orienteering)
-      ggplot2::ggsave(filename = "map_obt.png", plot = map_obt, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "map_obt.png"), plot = map_obt, width = 12, height = 7)
 
       map_lia <- ggplot2::ggplot() +
         ggplot2::geom_sf(data = dados.lia, size = 1, show.legend = TRUE, fill = cor.lia) +
@@ -143,7 +143,7 @@ mapa_cidades_server <- function(id, shared_data, res_mod) {
         ggplot2::xlab("Longitude") + ggplot2::ylab("Latitude") + axis.theme() + ggplot2::labs(fill = "Lengenda Incidências") +
         ggplot2::scale_fill_manual(values = c("white", "lightgray", "yellow", "orange", "red", "saddlebrown")) +
         ggspatial::annotation_north_arrow(location = "bl", which_north = "true", pad_x = ggplot2::unit(0.75, "in"), pad_y = ggplot2::unit(0.5, "in"), style = ggspatial::north_arrow_fancy_orienteering)
-      ggplot2::ggsave(filename = "map_lia.png", plot = map_lia, width = 12, height = 7)
+      ggplot2::ggsave(filename = file.path(report_output_dir(), "map_lia.png"), plot = map_lia, width = 12, height = 7)
 
       map.incidencia <- leaflet::leaflet(dados.maps.pr, options = list(zoomControl = FALSE)) %>%
         leaflet::addTiles() %>%

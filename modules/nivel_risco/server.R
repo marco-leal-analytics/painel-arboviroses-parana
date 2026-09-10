@@ -11,7 +11,8 @@ nivel_risco_server <- function(id, shared_data) {
           dplyr::select(c(nome, Codigo, `População estimada - pessoas [2019]`, regional, macroregional, Casos, DSA, DG, Obitos, incidencia))
         epi.city$geometry <- NULL
 
-        res_mod_epi <- shinyWidgets::selectizeGroupServer(
+        res_mod_epi <- shiny::callModule(
+          module = shinyWidgets::selectizeGroupServer,
           id = "ftable1",
           data = epi.city,
           vars = c("macroregional", "regional", "nome")
@@ -44,7 +45,8 @@ nivel_risco_server <- function(id, shared_data) {
           dplyr::select(c(nome, Codigo, `População estimada - pessoas [2019]`, regional, macroregional, Casos, DSA, DG, Obitos, incidencia))
         epi.city$geometry <- NULL
 
-        res_mod_alerta <- shinyWidgets::selectizeGroupServer(
+        res_mod_alerta <- shiny::callModule(
+          module = shinyWidgets::selectizeGroupServer,
           id = "ftable2",
           data = epi.city,
           vars = c("macroregional", "regional", "nome")
@@ -77,7 +79,8 @@ nivel_risco_server <- function(id, shared_data) {
           dplyr::select(c(nome, Codigo, `População estimada - pessoas [2019]`, regional, macroregional, Casos, DSA, DG, Obitos, incidencia))
         epi.city$geometry <- NULL
 
-        res_mod_baixo <- shinyWidgets::selectizeGroupServer(
+        res_mod_baixo <- shiny::callModule(
+          module = shinyWidgets::selectizeGroupServer,
           id = "ftable3",
           data = epi.city,
           vars = c("macroregional", "regional", "nome")
@@ -113,7 +116,8 @@ nivel_risco_server <- function(id, shared_data) {
           dplyr::select(c(nome, Codigo, `População estimada - pessoas [2019]`, regional, macroregional, Casos, Obitos, incidencia))
         epi.city$geometry <- NULL
 
-        res_mod_scasos <- shinyWidgets::selectizeGroupServer(
+        res_mod_scasos <- shiny::callModule(
+          module = shinyWidgets::selectizeGroupServer,
           id = "ftable4",
           data = epi.city,
           vars = c("macroregional", "regional", "nome")

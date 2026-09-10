@@ -20,7 +20,7 @@ comportamento_inicial_filtro_ui <- function(id) {
         params = list(
           macroregional = list(inputId = "macroregional", title = "Macroregional:"),
           regional = list(inputId = "regional", title = "Regional:", width = 12),
-          nome.x = list(inputId = "nome", title = "Cidade:")
+          nome = list(inputId = "nome", title = "Cidade:")
         )
       )
     )
