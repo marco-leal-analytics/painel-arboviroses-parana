@@ -1,6 +1,5 @@
 # Monta, uma única vez por sessão, os datasets e agregados consumidos por mais
-# de um módulo (equivalente ao topo de `legacy/server.R`, mas sem `<<-`).
-# O resultado é passado como `shared_data` para cada `modulo_server()`.
+# de um módulo. O resultado é passado como `shared_data` para cada `modulo_server()`.
 build_shared_data <- function() {
   df1 <- load_dengue_data()
 

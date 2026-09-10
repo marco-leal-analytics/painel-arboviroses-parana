@@ -27,5 +27,6 @@ Dados e agregados usados por mais de um módulo (`df1`, `dados.maps.pr`,
 `R/shared_data.R::build_shared_data()` e passados como argumento `shared_data`
 para os módulos — não há mais variáveis globais (`<<-`) entre módulos.
 
-A implementação original permanece em `legacy/` como referência histórica até
-a validação completa da versão modular.
+A implementação original (`legacy/`) foi validada linha a linha contra os
+módulos acima e removida do repositório; o histórico do git preserva o
+conteúdo caso seja necessário consultá-lo.

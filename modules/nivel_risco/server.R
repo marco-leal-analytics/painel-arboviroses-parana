@@ -85,9 +85,6 @@ nivel_risco_server <- function(id, shared_data) {
           data = epi.city,
           vars = c("macroregional", "regional", "nome")
         )
-        # NOTA: `legacy/server.R:872` alimenta output$table_baixo com res_mod_alerta()
-        # em vez de res_mod_baixo() (bug pré-existente). Preservado por fidelidade;
-        # corrigir apenas mediante confirmação explícita.
         output$table_baixo <- DT::renderDataTable(res_mod_baixo(),
           options = list(pageLength = 10, scrollX = TRUE, searching = FALSE, autoWidth = FALSE)
         )

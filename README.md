@@ -13,7 +13,6 @@ assets/                 # recursos de desenvolvimento
 www/                    # recursos publicados pelo Shiny (logos, imagens do relatório)
 pipeline/               # preparação de dados fora da inicialização
 tests/                  # testes unitários e de interface
-legacy/                 # implementação original, mantida como referência
 renv/                   # ambiente reprodutível
 ```
 
@@ -40,10 +39,7 @@ centralizadas, os utilitários, a camada de dados compartilhada e os módulos
 antes de inicializar a aplicação.
 
 Para restaurar as dependências em outra máquina, use `renv::restore()` a partir
-da raiz do projeto. Esta reorganização não pôde ser validada rodando a
-aplicação neste ambiente (stack geoespacial pesada — `sf`, `brazilmaps`,
-`geobr`); antes de considerar a migração concluída, rode `shiny::runApp()`
-localmente e percorra todas as abas, incluindo a geração do relatório em PDF.
+da raiz do projeto.
 
 ## Dados
 
@@ -52,8 +48,3 @@ exploratório não usado pelo app), arquivos derivados em `data/processed/` e
 dados externos em `data/external/`. Ver `data/README.md`. Relatórios e imagens
 geradas em tempo de execução não são versionados (`.gitignore`).
 
-## Legado
-
-O código original permanece em `legacy/` como referência histórica da
-migração. Novas funcionalidades devem ser adicionadas diretamente aos módulos
-em `modules/`, não a `legacy/`.

@@ -9,6 +9,7 @@ source("R/utils.R", local = .GlobalEnv)
 source("R/plot_helpers.R", local = .GlobalEnv)
 source("R/data_loader.R", local = .GlobalEnv)
 source("R/shared_data.R", local = .GlobalEnv)
+source("R/report_builder.R", local = .GlobalEnv)
 
 module_dirs <- list.dirs("modules", full.names = TRUE, recursive = FALSE)
 module_dirs <- module_dirs[basename(module_dirs) != "_template"]
