@@ -12,7 +12,7 @@ atualizar a opacidade do mapa macrorregional — a mesma dependência cruzada qu
 existia no legado (`observeEvent(res_mod())`), agora explícita como argumento
 em vez de variável global.
 
-Como efeito colateral (preservado do legado), este módulo grava
-`map_inc.png`, `map_inc4.png`, `map_obt.png` e `map_lia.png` na raiz do
-projeto sempre que `map.descritive3` é renderizado — esses arquivos alimentam
-o módulo [[relatorio]].
+Como efeito colateral, este módulo grava `map_inc.png`, `map_inc4.png`,
+`map_obt.png` e `map_lia.png` em `output/relatorio/` (via
+`R/utils.R::report_output_dir()`) sempre que `map.descritive3` é renderizado
+— esses arquivos alimentam o módulo [[relatorio]].

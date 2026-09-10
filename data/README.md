@@ -20,3 +20,7 @@ mais de uma aba) é montado por `R/shared_data.R`.
 Bases muito grandes e não utilizadas pelo app (`DengueEstatistica/`,
 `painel_dengue.rar`) foram removidas do controle de versão (ver `.gitignore`)
 mas permanecem no disco local.
+
+Para o significado de cada campo (códigos SINAN de classificação final,
+evolução, autoctonia, situação gestacional, escolaridade etc.) e a origem de
+cada arquivo em `raw/`, ver [`docs/dicionario_dados.md`](../docs/dicionario_dados.md).
